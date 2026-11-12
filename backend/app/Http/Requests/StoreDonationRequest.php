@@ -8,6 +8,18 @@ class StoreDonationRequest extends FormRequest
 {
     public function authorize(): bool { return true; }
 
+    /**
+     * The frontend validates the phone with spaces stripped (e.g. "0712 345 678")
+     * but sends the value as typed. Strip whitespace here too so valid numbers
+     * are not rejected with a 422 before M-Pesa's normalizePhone() can clean them.
+     */
+    protected function prepareForValidation(): void
+    {
+        if (is_string($this->input('phone'))) {
+            $this->merge(['phone' => preg_replace('/\s+/', '', $this->input('phone'))]);
+        }
+    }
+
     public function rules(): array
     {
         $mpesa = $this->input('payment_method') === 'mpesa';
