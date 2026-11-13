@@ -1,5 +1,16 @@
 FRONTEND_URL=http://localhost:5173
 
+# Contact page: inbox that receives enquiries (Gmail SMTP below sends on its behalf)
+CONTACT_EMAIL=
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_SCHEME=smtp
+MAIL_USERNAME=your.address@gmail.com
+MAIL_PASSWORD=your-16-char-google-app-password
+MAIL_FROM_ADDRESS=your.address@gmail.com
+MAIL_FROM_NAME="HopeRise"
+
 MPESA_ENV=sandbox
 MPESA_CONSUMER_KEY=
 MPESA_CONSUMER_SECRET=

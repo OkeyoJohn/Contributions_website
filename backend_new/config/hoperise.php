@@ -3,6 +3,9 @@
 return [
     'frontend_url' => env('FRONTEND_URL', 'http://localhost:5173'),
 
+    // Inbox that receives contact-form enquiries (falls back to the sender if unset).
+    'contact_email' => env('CONTACT_EMAIL') ?: env('MAIL_FROM_ADDRESS'),
+
     'mpesa' => [
         'env' => env('MPESA_ENV', 'sandbox'), // sandbox | production
         'key' => env('MPESA_CONSUMER_KEY'),
